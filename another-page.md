@@ -7,3 +7,8 @@ layout: default
 _yay_
 
 [back](./)
+
+Wisse is gay. 
+
+
+
