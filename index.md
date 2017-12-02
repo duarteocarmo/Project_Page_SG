@@ -2,6 +2,20 @@
 layout: default
 ---
 
+# The Texas Church shooting project
+
+This is a test to see if the image appears:
+
+![test](images/test.png)
+
+
+
+
+
+
+
+
+
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
@@ -52,7 +66,7 @@ end
 ###### [](#header-6)Header 6
 
 | head1        | head two          | three |
-|:-------------|:------------------|:------|
+| :----------- | :---------------- | :---- |
 | ok           | good swedish fish | nice  |
 | out of stock | good and plenty   | nice  |
 | ok           | good `oreos`      | hmm   |
@@ -72,9 +86,9 @@ end
 ### And an ordered list:
 
 1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+2.  Item two
+3.  Item three
+4.  Item four
 
 ### And a nested list:
 
