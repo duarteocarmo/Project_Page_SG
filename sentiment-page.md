@@ -8,7 +8,7 @@ layout: default
 
 This is a lafjahef ne ceqf xeqf qef x ef
 
-Testing an emoji: `:no_mouth:`
+Testing an emoji: `:no_mouth:`  😊
 
 
 
