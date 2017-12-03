@@ -12,7 +12,7 @@ This is a test to see if the image appears:
 
 <script>
 
-​	console.log("Is this working?");
+​	console.log("is this working?");
 
 </script>
 
