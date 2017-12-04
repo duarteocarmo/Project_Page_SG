@@ -4,8 +4,6 @@ layout: default
 
 # Sentiment Analysis
 
-[TOC]
-
 ## Part 1: How happy?  
 
 ​	The first aim was too study the sentiment of all of the tweets in our database, over time. After cleaning all of the tweets, and reducing them to their bare core, a database of happy words scoring by MIT was used. It's also interesting to see the "influencial" tweets and if they are connected to the popular opinion at all. 
