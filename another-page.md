@@ -1,5 +1,5 @@
 ---
-layout: default_network
+layout: default
 ---
 
 ## Welcome to another page
