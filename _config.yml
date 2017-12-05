@@ -4,3 +4,4 @@ show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
 baseurl: /Project_Page_SG
+markdown: kramdown
