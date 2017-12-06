@@ -8,5 +8,4 @@ _yay_
 
 [back](./)
 
-Wisse is gay. 
-
+Wisse is gay.
