@@ -1,12 +1,12 @@
 <div class="graph-wrapper">
-  <div>
+  <div class="graph-settings">
     <label>Node size scale</label>
     <div class="button-block">
       <button id="normal-gcc" class="selected">Uniform size</button>
       <button id="log-gcc">Logarithmic in degree</button>
     </div>
   </div>
-  <div>
+  <div class="graph-settings">
     <label>Type of graph</label>
     <div class="button-block">
       <button id="mention-gcc" class="selected">Mention Graph</button>
@@ -113,7 +113,7 @@
               .on("end", dragended));
 
         node.append("title")
-          .text(function(d) { return '#' + d.id; });
+          .text(function(d) { return '@' + d.id; });
 
         simulation
           .nodes(graph.nodes)
