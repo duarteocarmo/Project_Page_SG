@@ -1,5 +1,5 @@
-title: The data behind the Church Shooting
-description: This project, made for the Social Graphs course at DTU, seeks to explore the data behind the Texas Shooting.
+title: Event Analysis Tool
+description: This project, made for the Social Graphs course at DTU, seeks to build a set of tools that facilitate the network analysis and sentiment analysis of any twitter event.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
