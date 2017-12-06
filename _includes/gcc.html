@@ -1,0 +1,158 @@
+<div class="graph-wrapper">
+  <div>
+    <label>Node size scale</label>
+    <div class="button-block">
+      <button id="normal-gcc" class="selected">Uniform size</button>
+      <button id="log-gcc">Logarithmic in degree</button>
+    </div>
+  </div>
+  <div>
+    <label>Type of graph</label>
+    <div class="button-block">
+      <button id="mention-gcc" class="selected">Mention Graph</button>
+      <button id="hashtag-gcc">Hashtag Graph</button>
+    </div>
+  </div>
+  <svg id="gcc" style="width: 100%;" width="800" height="600"></svg>
+</div>
+
+<script>
+    var scale = 'normal';
+    var graph = 'mention';
+
+    var gccSettings = {
+      'hashtag': {
+        'strength': -8,
+        'scaleFactor': 20
+      },
+      'mention': {
+        'strength': -0.8,
+        'scaleFactor': 5
+      }
+    }
+
+    $(document).ready(function(){
+      $("#normal-gcc").click(function(){
+        $("#normal-gcc").addClass("selected")
+        $("#log-gcc").removeClass("selected")
+        removeGcc();
+        scale = 'normal';
+        renderGcc();
+      });
+      $("#log-gcc").click(function(){
+        $("#log-gcc").addClass("selected")
+        $("#normal-gcc").removeClass("selected")
+        removeGcc();
+        scale = 'log';
+        renderGcc();
+      });
+    });
+
+    $(document).ready(function(){
+      $("#mention-gcc").click(function(){
+        $("#mention-gcc").addClass("selected")
+        $("#hashtag-gcc").removeClass("selected")
+        removeGcc();
+        graph = 'mention';
+        renderGcc();
+      });
+      $("#hashtag-gcc").click(function(){
+        $("#hashtag-gcc").addClass("selected")
+        $("#mention-gcc").removeClass("selected")
+        removeGcc();
+        graph = 'hashtag';
+        renderGcc();
+      });
+    });
+
+    function scaleSizeGcc(d) {
+      if (scale === 'normal') {
+        return 3;
+      }
+      if (scale === 'log') {
+        var factor = d > 0 ? Math.log(d.degree) : 0.1;
+        return graphSettings[graph]['scaleFactor'] * factor;
+      };
+    };
+
+    function removeGcc() {
+
+    }
+
+    function renderGcc() {
+      var svg = d3.select("#gcc"),
+      width = +svg.attr("width"),
+      height = +svg.attr("height");
+      var color = d3.scaleOrdinal(d3.schemeCategory20);
+      console.log('Rendering GCC with this svg', svg);
+
+      var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.id; }))
+        .force("charge", d3.forceManyBody().strength(gccSettings[graph]['strength']))
+        .force("center", d3.forceCenter(width / 2, height / 2));
+
+      d3.json("data/" + graph + "_gcc.json", function(error, graph) {
+        if (error) throw error;
+        console.log('graph', graph);
+        var link = svg.append("g")
+          .attr("class", "links")
+          .selectAll("line")
+          .data(graph.links)
+          .enter().append("line")
+          .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+        console.log('SVG with links', svg);
+        var node = svg.append("g")
+          .attr("class", "nodes")
+          .selectAll("circle")
+          .data(graph.nodes)
+          .enter().append("circle")
+          .attr("r", scaleSizeGcc)
+          .call(d3.drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended));
+        console.log('SVG with nodes', svg);
+
+        node.append("title")
+          .text(function(d) { return '#' + d.id; });
+
+        simulation
+          .nodes(graph.nodes)
+          .on("tick", ticked);
+
+        simulation.force("link")
+          .links(graph.links);
+        console.log('simulation', simulation);
+        function ticked() {
+          link
+            .attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+          node
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+        }
+    });
+    };
+
+    function dragstarted(d) {
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+      if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+    renderGcc();
+</script>

@@ -10,7 +10,7 @@ layout: sentiment
 
 ![over_time](images/over_time.png)
 
-This visualisation confirms the hyopthesis that popular tweets are not only **more emotional**, but also seem to module the popular opinions by some degree.
+This visualisation confirms the hypothesis that popular tweets are not only **more emotional**, but also seem to module the popular opinions by some degree.
 
 Another interesting fact is to see the "week" mark (when 150 hours go by) and to see how the overall sentiment is one of **mourning**.
 
