@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>The Networks | Event Analysis Tool</title>
+<meta property="og:title" content="The Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This project, made for the Social Graphs course at DTU, seeks to build a set of tools that facilitate the network analysis and sentiment analysis of any event, through Twitter." />
+<meta property="og:description" content="This project, made for the Social Graphs course at DTU, seeks to build a set of tools that facilitate the network analysis and sentiment analysis of any event, through Twitter." />
+<link rel="canonical" href="http://localhost:4000/Project_Page_SG/network-page.html" />
+<meta property="og:url" content="http://localhost:4000/Project_Page_SG/network-page.html" />
+<meta property="og:site_name" content="Event Analysis Tool" />
+<script type="application/ld+json">
+{"name":null,"description":"This project, made for the Social Graphs course at DTU, seeks to build a set of tools that facilitate the network analysis and sentiment analysis of any event, through Twitter.","author":null,"@type":"WebPage","url":"http://localhost:4000/Project_Page_SG/network-page.html","publisher":null,"image":null,"headline":"The Networks","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/Project_Page_SG/assets/css/style.css?v=abde0b24c3582bac8fb98996ae977b7801c09555">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <a class="back-button" href="/Project_Page_SG/">Back</a>
+      <h1 id="the-networks">The Networks</h1>
+
+<h3 id="generating-networks-from-tweets">Generating networks from tweets</h3>
+<p>From the tweets we collected we are going to generate 2 of different networks that we will be using throughout the rest of the analysis. In either network, the <em>nodes</em> are going to be the users that have been tweeting about the event using one of the predefined hashtags. <br />
+For the first network, the <em>edges</em> will be constructed through mentions in these tweets. So, when a tweet mentions another user that is also a <em>node</em> in the network, there will be an <em>edge</em> between these two <em>nodes</em>. We will refer to this network as <code class="highlighter-rouge">mention_graph</code>. <br />
+For the second network, we define the <em>edges</em> between <em>nodes</em> if they share a common hashtag, not including the query hashtags. For example, if two tweets from different <em>nodes</em> use the hashtag <strong>#GunSense</strong>, we will create an <em>edge</em> between them. We will refer to this network as <code class="highlighter-rouge">hashtag_graph</code>.</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div>
+    <label>Node size scale</label>
+    <button id="normal">Uniform size</button>
+    <button id="log">Logarithmic in degree</button>
+  </div>
+<div>
+    <label>Type of graph</label>
+    <button id="mention">Mention Graph</button>
+    <button id="hashtag">Hashtag Graph</button>
+  </div>
+
+<svg id="graph" style="width: 100%;" width="800" height="600"></svg>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+
+var scale = 'normal';
+var graph = 'mention_gcc.json';
+
+$(document).ready(function(){
+  $("#normal").click(function(){
+    remove();
+    scale = 'normal';
+    render();
+  });
+  $("#log").click(function(){
+    remove();
+    scale = 'log';
+    render();
+  });
+});
+
+$(document).ready(function(){
+  $("#mention").click(function(){
+    remove();
+    graph = 'mention_gcc.json';
+    render();
+  });
+  $("#hashtag").click(function(){
+    remove();
+    graph = 'hashtag_gcc.json';
+    render();
+  });
+});
+
+function scaleSize(d) {
+  if (scale === 'normal') {
+    return 3;
+  }
+  if (scale === 'log') {
+    return 5 * Math.log(d.degree);
+  };
+};
+
+function remove() {
+  var svg = d3.select("svg");
+  svg.selectAll("*").remove();
+}
+
+function render() {
+  var svg = d3.select("svg"),
+  width = +svg.attr("width"),
+  height = +svg.attr("height");
+
+  var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+  var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+    .force("charge", d3.forceManyBody().strength(-1))
+    .force("center", d3.forceCenter(width / 2, height / 2));
+  d3.json("data/" + graph, function(error, graph) {
+  if (error) throw error;
+
+  var link = svg.append("g")
+    .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line")
+    .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.append("g")
+    .attr("class", "nodes")
+    .selectAll("circle")
+    .data(graph.nodes)
+    .enter().append("circle")
+    .attr("r", scaleSize)
+    .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+  var nodeEnter = node.enter().append("g")
+    .attr("class", "node")
+
+    .on("mouseover", function(d) {
+      console.log('Mouseover')
+      var g = d3.select(this); // The node
+      // The class is used to remove the additional text later
+      var info = g.append('text')
+        .classed('info', true)
+        .attr('x', 20)
+        .attr('y', 10)
+        .text('More info');
+    })
+    .on("mouseout", function() {
+      // Remove the info text on mouse out.
+      d3.select(this).select('text.info').remove();
+    });
+
+  node.append("title")
+    .text(function(d) { return d.id; });
+
+  simulation
+    .nodes(graph.nodes)
+    .on("tick", ticked);
+
+  simulation.force("link")
+    .links(graph.links);
+
+  function ticked() {
+    link
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+    node
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+  }
+});
+};
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+}
+
+render();
+</script>
+
+
+
+
+    </div>
+    <footer>
+      
+<!--        <p>This project is maintained by <a href="http://github.com/duarteocarmo">duarteocarmo</a></p>-->
+      
+      <p><small>Made with 🍕 and 🧠 </small></p>
+    </footer>
+    <script src="/Project_Page_SG/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

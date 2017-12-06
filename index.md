@@ -2,142 +2,57 @@
 layout: default
 ---
 
-# The Texas Church shooting project
+# The Project
 
-This is a test to see if the image appears:
+![cover](images/cover.png)
 
-![test](images/test.png)
+## Idea
 
+The main idea was inspired by [this](https://medium.com/hci-design-at-uw/information-wars-a-window-into-the-alternative-media-ecosystem-a1347f32fd8f) Medium Article where the author, [Kate Starbird](https://medium.com/@katestarbird) analyses tweets and news sources they site. With this information she manages to build a network about the flow of information. 
 
+So we thought, what can we find that is interesting about the tweets right after a big event, such a shooting, an attack (or maybe something not terrorism related)? 
 
-<script>
+The main purpose of this project is to build a set of tools to which anyone can feed a query to a database, so that he/she can directly return insights from it. 
 
-​	console.log("is this working?");
+In case my explanation sucks (which it probably does, here's a picture):
 
-</script>
+![process](images/process.png)
 
+## Data
 
+To handle data, we used several tools:
 
+- [MongoDB](https://www.mongodb.com)  to store our data and [PyMongo](https://pypi.python.org/pypi/pymongo/) to handle it. 
+- To actually receive tweets, the GetOldTweets API that can be found [here](https://github.com/Jefferson-Henrique/GetOldTweets-python).
+- [NetworkX](https://networkx.github.io) for the network analysis. 
+- [DeepMoji](https://github.com/bfelbo/deepmoji) for sentiment analysis and classification. 
+- Other standard python libraries (numpy, matplotlib, etc.)
 
+## Analysis
 
+To prove the pipeline of tools, we applied them to two different events:
 
+- The 2017 Sutherland Springs church shooting. (5th November 2017) [Notebook]()
+- The 2017 Las Vegas shooting. (1st October 2017) [Notebook]()
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+There are many ways you can consult the analysis: 
 
-[Link to another page](another-page).
+- Browse them in a more interactive, article-like way in the sections on the left of this page. 
+- Download the Notebooks, each one related to one of the events. 
 
-There should be whitespace between paragraphs.
+## Main Findings
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+Throughout our analysis, we found a lot of cool stuff, here are some of the most important findings: 
 
-# [](#header-1)Header 1
+!!!!!!!WRITE MOST IMPORTANT WRITINGS HERE BOYS!!!!!!!
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## [](#header-2)Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### [](#header-3)Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### [](#header-4)Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### [](#header-5)Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### [](#header-6)Header 6
-
-| head1        | head two          | three |
-| :----------- | :---------------- | :---- |
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-2.  Item two
-3.  Item three
-4.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![](https://guides.github.com/activities/hello-world/branching.png)
+- On the [Sentiment Analysis for the Texas Church Shooting](https://duarteocarmo.github.io/Project_Page_SG/sentiment-page), something very interesting happens with user sentiment at the 1 week mark, where the DeepMoji model helps us identify some sort of mourning, exactly one week after the event, where people start referring to the shooting in a more compassionate, less agressive  way. 
 
 
-### Definition lists can be used with HTML syntax.
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
 
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
 
-```
-The final element.
-```
+
+
+
+

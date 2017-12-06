@@ -1,5 +1,5 @@
 title: Event Analysis Tool
-description: This project, made for the Social Graphs course at DTU, seeks to build a set of tools that facilitate the network analysis and sentiment analysis of any twitter event.
+description: This project, made for the Social Graphs course at DTU, seeks to build a set of tools that facilitate the network analysis and sentiment analysis of any event, through Twitter.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
