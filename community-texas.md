@@ -11,4 +11,10 @@ to get a sense for the kind of accounts we find.
 Then, we will look into the most common hashtags used in every community in
 the mention graph, to get a feeling for the topics that live in every community.
 
-We use the [Louvain method \[1\]](references) for community detection.
+We use the [Louvain method \[1\]](references) for community detection with
+the following [implementation](https://github.com/taynaud/python-louvain) in
+Python.
+
+## Plots
+
+{% include partition-texas.html %}
