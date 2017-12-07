@@ -163,17 +163,10 @@
               .on("drag", dragged)
               .on("end", dragended));
 
-        node.append("text")
-          .text(function(d) { return d.partition;})
-          .attr("dx", 12)
-          .attr("dy", ".35em");
 
 
         node.append("title")
-          .text(function(d) { return '@' + d.id; });
-
-
-
+          .text(function(d) { return '@' + d.id + ' (partition: ' + d.partition + ')'; });
 
         simulation
           .nodes(graph.nodes)
@@ -193,25 +186,27 @@
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; });
         }
+
+        function dragstarted(d) {
+          if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(d) {
+          d.fx = d3.event.x;
+          d.fy = d3.event.y;
+        }
+
+        function dragended(d) {
+          if (!d3.event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
       });
     };
 
-    function dragstarted(d) {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-        d.fx = d.x;
-        d.fy = d.y;
-    }
 
-    function dragged(d) {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
-    }
-
-    function dragended(d) {
-      if (!d3.event.active) simulation.alphaTarget(0);
-        d.fx = null;
-        d.fy = null;
-    }
     generateTable();
     renderGcc();
 </script>
