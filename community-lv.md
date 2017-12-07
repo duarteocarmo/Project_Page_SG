@@ -4,10 +4,9 @@ layout: network-lv
 
 # Community Analysis (Las Vegas)
 
-The next step in our analysis is to define communities in our network and
-see what these communities revolve around.First, we will look into the
-sizes of the communities and the biggest accounts in the biggest communities,
-to get a sense for the kind of accounts we find.
+The next step in our analysis is to define communities in our network and see what these communities revolve around.
+
+First, we will look into the sizes of the communities and the biggest accounts in the biggest communities, to get a sense for the type of accounts we find.
 Then, we will look into the most common hashtags used in every community in
 the mention graph, to get a feeling for the topics that live in every community.
 
@@ -18,8 +17,8 @@ Python.
 ## Plots
 
 Below two plots are displayed of the communities found with the Louvain
-algorithm, with a legend table that shows some info on the most connected
-node in this community, under the assumption that this will tell us something
+algorithm, with a legend table that shows some information on the most connected
+nodes in this community, under the assumption that this will tell us something
 about the community as a whole.
 
 {% include partition-lv.html %}

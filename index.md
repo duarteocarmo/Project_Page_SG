@@ -26,7 +26,7 @@ To handle data, we used several tools:
 - To actually receive tweets, the GetOldTweets API that can be found [here](https://github.com/Jefferson-Henrique/GetOldTweets-python).
 - [NetworkX](https://networkx.github.io) for the network analysis.
 - [DeepMoji](https://github.com/bfelbo/deepmoji) for sentiment analysis and classification.
-- [d3js](www.d3js.org) for interactive plotting in Javascript.
+- [d3js](https://d3js.org/) for interactive plotting in Javascript.
 - Other standard python libraries (numpy, matplotlib, etc.)
 
 ## Analysis
@@ -41,10 +41,16 @@ There are many ways you can consult the analysis:
 - Browse them in a more interactive, article-like way in the sections on the left of this page.
 - Download the Notebooks, each one related to one of the events.
 
-## Main Findings
+## Executive Summary
 
 Throughout our analysis, we found a lot of cool stuff, here are some of the most important findings:
 
-!!!!!!!WRITE MOST IMPORTANT WRITINGS HERE BOYS!!!!!!!
+**<u>Las Vegas Shooting:</u>** 
 
-- On the [Sentiment Analysis for the Texas Church Shooting](https://duarteocarmo.github.io/Project_Page_SG/sentiment-page), something very interesting happens with user sentiment at the 1 week mark, where the DeepMoji model helps us identify some sort of mourning, exactly one week after the event, where people start referring to the shooting in a more compassionate, less agressive  way.
+- [Infowars](https://www.google.dk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjVmuWp1fjXAhXpd5oKHd2QB0UQFggmMAA&url=https%3A%2F%2Fwww.infowars.com%2F&usg=AOvVaw2G25vOeObieCu_h8KRtBvo) and [Intellihub](https://www.google.dk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwirmLyq1fjXAhUMGZoKHbS6Cw0QFggmMAA&url=https%3A%2F%2Fwww.intellihub.com%2F&usg=AOvVaw3a04njRzkJjHJ0xjcnhqkq) are within the 15 most cited sources in the database of tweets. 
+- The distribution of the amount of tweets with #lasvegasshooting decreases exponentially over time.
+- Two communities of users were detected using the Python Louvain Algorithm where at least 60% of the users cited  [Infowars](https://www.google.dk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjVmuWp1fjXAhXpd5oKHd2QB0UQFggmMAA&url=https%3A%2F%2Fwww.infowars.com%2F&usg=AOvVaw2G25vOeObieCu_h8KRtBvo) and [Intellihub](https://www.google.dk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwirmLyq1fjXAhUMGZoKHbS6Cw0QFggmMAA&url=https%3A%2F%2Fwww.intellihub.com%2F&usg=AOvVaw3a04njRzkJjHJ0xjcnhqkq).
+
+**<u>Sutherland Springs Shooting:</u>** 
+
+- On the [Sentiment Analysis](https://duarteocarmo.github.io/Project_Page_SG/sentiment-page), something very interesting happens with user sentiment at the 1 week mark, where the DeepMoji model helps us identify some sort of mourning, exactly one week after the event, where people start referring to the shooting in a more compassionate, less agressive  way.
