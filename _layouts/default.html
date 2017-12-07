@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% seo %}
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
@@ -15,20 +15,44 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="{{ site.github.url }}"> <h1>{{ site.title | default: site.github.repository_name }}</h1> </a>
+        <a href="{{ site.baseurl }}/"> <h1>{{ site.title | default: site.github.repository_name }}</h1> </a>
         <p>{{ site.description | default: site.github.project_tagline }}</p>
+        <div class="button-group">
+          <!-- <p class="view"><a href="{{ site.baseurl }}"/>Home</p></a> -->
+          <label class="button-label">Select Shooting Location</label>
+          <div>
+            <button type="button" id="lasvegas-btn" class="selected">Las Vegas (NV)</button>
+            <button type="button" id="texas-btn">Sutherland Springs (TX)</button>
+          </div>
+        </div>
+        <div class="link-list" id="lasvegas">
+          <p class="view">
+            <a href="{{ site.baseurl }}/LV-network-page">The Network </a>
+            <small class="subscript">#lasvegasshooting</small>
 
-          <p class="view"><a href="{{ site.baseurl }}"/>Home <small>{{ github_name }}</small></a></p>
-
-          <p class="view"><a href="{{ site.baseurl }}/network-page">The Texas Network <small>{{ github_name }}</small></a></p>
-
-          <p class="view"><a href="{{ site.baseurl }}/sentiment-page">The Texas Sentiment Analysis<small>{{ github_name }}</small></a></p>
-
-
-          <p class="view"><a href="{{ site.baseurl }}/LV-network-page">The Las Vegas Network <small>{{ github_name }}</small></a></p>
-
-          <p class="view"><a href="{{ site.baseurl }}/LV-sentiment-page">The Las Vegas Sentiment Analysis<small>{{ github_name }}</small></a></p>
-
+          </p>
+          <p class="view">
+            <a href="{{ site.baseurl }}/LV-sentiment-page">Sentiment Analysis</a>
+            <small class="subscript">#lasvegasshooting</small>
+          </p>
+        </div>
+        <div class="link-list" id="texas">
+          <p class="view">
+            <a href="{{ site.baseurl }}/network-page">The Network</a>
+            <small class="subscript">#texasshooting</small>
+          </p>
+          <p class="view">
+            <a href="{{ site.baseurl }}/sentiment-page">Sentiment Analysis </a>
+            <small class="subscript">#texasshooting</small>
+          </p>
+          <p class="view">
+            <a href="{{ site.baseurl }}/community-texas">Community Analysis </a>
+            <small class="subscript">#texasshooting</small>
+          </p>
+        </div>
+        <p class="view">
+          <a href="{{ site.baseurl }}/references">References</a>
+        </p>
         {% if site.github.is_project_page %}
           <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ github_name }}</small></a></p>
 
@@ -46,8 +70,7 @@
           <ul>
             <li><a href="https://www.google.pt/?gws_rd=ssl">Download <strong>Notebook 1</strong></a></li>
             <li><a href="https://www.google.pt/?gws_rd=ssl">Download <strong>Notebook 2</strong></a></li>
-            <li><a href="https://www.google.pt/?gws_rd=ssl">Download <strong>
-            Data</strong></a></li>
+            <li><a href="https://www.google.pt/?gws_rd=ssl">Download <strong>Data</strong></a></li>
           </ul>
       </header>
       <section>
@@ -63,7 +86,29 @@
       </footer>
     </div>
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+    <script>
+      $(document).ready(function(){
+        $("#texas").hide();
+        $("#lasvegas-btn").click(function(e){
+          e.preventDefault();
+          console.log('Clicked lasvegas');
+          $("#lasvegas-btn").addClass("selected");
+          $("#texas-btn").removeClass("selected");
+          $("#lasvegas").show();
+          $("#texas").hide();
 
+        });
+        $("#texas-btn").click(function(e){
+          e.preventDefault();
+          console.log('Clicked texas');
+          $("#texas-btn").addClass("selected");
+          $("#lasvegas-btn").removeClass("selected");
+          $("#texas").show();
+          $("#lasvegas").hide();
+
+        });
+      });
+    </script>
 
   {% if site.google_analytics %}
     <script>

@@ -1,6 +1,22 @@
 @import "fonts";
 @import "rouge-github";
 
+.subscript {
+  display: block;
+}
+
+.button-label {
+  color: #999;
+  text-transform: uppercase;
+  font-weight:lighter;
+  margin-bottom: 5px;
+}
+
+.link-list {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 .graph-settings {
   width: 50%;
   float: left;
