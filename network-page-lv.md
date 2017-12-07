@@ -1,8 +1,7 @@
 ---
-layout: network
+layout: network-lv
 ---
-
-# The Networks
+# The Networks (Las Vegas)
 
 ## Generating networks from tweets
 From the tweets we collected we are going to generate 2 of different networks
@@ -21,7 +20,7 @@ between them. We will refer to this network as `hashtag_graph`.
 ### Stats
 Below we have displayed some basic statistics about either graph.
 
-{% include graph_tables.html %}
+{% include graph_tables-lv.html %}
 
 ### Degree Distribution
 
@@ -57,7 +56,7 @@ each node represents.
 
 *Please not that some graphs load slowly due to their size.*
 
-{% include graphs.html %}
+{% include graphs-lv.html %}
 
 ## Giant Connected Components
 
@@ -66,7 +65,7 @@ look at the *Giant Connected Component* (GCC) for the rest of the analysis.
 
 Below we have a new overview of stats from these GCC's for each graph.
 ### Stats
-{% include gcc_tables.html %}
+{% include gcc_tables-lv.html %}
 
 ### Degree Distribution
 
@@ -79,4 +78,4 @@ This comes with a new degree distribution of course, which is displayed below.
 This makes for much nicer plots, which can be seen below. Again with the same
 controls.
 
-{% include gcc.html %}
+{% include gcc-lv.html %}

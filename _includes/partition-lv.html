@@ -14,17 +14,66 @@
     </div>
   </div>
   <svg id="gcc" style="width: 100%;" width="800" height="600"></svg>
+  <table id="legend">
+    <capiton>Top accounts by degree per partition</capiton>
+    <thead>
+      <tr>
+        <th>Partition</th>
+        <th>Size</th>
+        <th>Top Account</th>
+        <th>Location</th>
+        <th>URL</th>
+        <th>Degree</th>
+        <th>Followers</th>
+      </tr>
+    </thead>
+  </table>
 </div>
 
 
 <script>
+    function sortByKey(array, key) {
+      return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      });
+    }
     var scale = 'normal';
     var graph = 'mention';
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+    var columns = ['Partition', 'Partition Size', 'Screen Name', 'Location', 'Url', 'Degree', 'Followers'];
+    var table = document.getElementById('legend');
+
+    function generateTable() {
+      console.log('generateTable', table.rows.length)
+
+      $.getJSON('data/' + graph + '_partition_accounts.json', function(json) {
+          var tableLength = table.rows.length
+          for (var rowNumber = 1; rowNumber < tableLength; rowNumber++) {
+            table.deleteRow(1);
+          }
+
+          var accounts = sortByKey(json, 'Partition');
+          for (var i in accounts) {
+            var rowNumber = Number(i) + 1;
+            var row = table.insertRow(rowNumber);
+            row.style.color = color(accounts[i]['Partition']);
+            for (j = 0; j < columns.length; j++) {
+              var cell = row.insertCell(j);
+              cell.innerHTML = accounts[i][columns[j]];
+            }
+          }
+      });
+    };
+
+
 
     var gccSettings = {
       'hashtag': {
         'strength': -8,
-        'scaleFactor': 20
+        'scaleFactor': 2
       },
       'mention': {
         'strength': -0.8,
@@ -56,6 +105,7 @@
         removeGcc();
         graph = 'mention';
         renderGcc();
+        generateTable();
       });
       $("#hashtag-gcc").click(function(){
         $("#hashtag-gcc").addClass("selected")
@@ -63,6 +113,7 @@
         removeGcc();
         graph = 'hashtag';
         renderGcc();
+        generateTable();
       });
     });
 
@@ -85,13 +136,12 @@
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
-      var color = d3.scaleOrdinal(d3.schemeCategory20);
 
       var simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id(function(d) { return d.id; }))
         .force("charge", d3.forceManyBody().strength(gccSettings[graph]['strength']))
         .force("center", d3.forceCenter(width / 2, height / 2));
-      d3.json("data/" + graph + "_gcc.json", function(error, graph) {
+      d3.json("data/" + graph + "_partition.json", function(error, graph) {
         if (error) throw error;
 
         var link = svg.append("g")
@@ -106,14 +156,17 @@
           .selectAll("circle")
           .data(graph.nodes)
           .enter().append("circle")
-          .attr("r", scaleSize)
-          .call(d3.drag()
+            .attr("r", scaleSize)
+            .attr("fill", function(d) { return color(d.partition); })
+            .call(d3.drag()
               .on("start", dragstarted)
               .on("drag", dragged)
               .on("end", dragended));
 
+
+
         node.append("title")
-          .text(function(d) { return '@' + d.id; });
+          .text(function(d) { return '@' + d.id + ' (partition: ' + d.partition + ')'; });
 
         simulation
           .nodes(graph.nodes)
@@ -154,5 +207,6 @@
     };
 
 
+    generateTable();
     renderGcc();
 </script>
