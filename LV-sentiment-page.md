@@ -1,7 +1,0 @@
----
-layout: default
----
-
-# Sentiment Analysis
-
-
