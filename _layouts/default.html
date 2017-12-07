@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="images/gun.png">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,11 +21,11 @@
         <p>{{ site.description | default: site.github.project_tagline }}</p>
         <div class="button-group">
           <!-- <p class="view"><a href="{{ site.baseurl }}"/>Home</p></a> -->
-          <label class="button-label">Select Shooting</label>
+          <label class="button-label">Select Event</label>
           <div>
-            <button type="button" id="lasvegas-btn" class="selected">Las Vegas (NV)
+            <button type="button" id="lasvegas-btn" class="selected">#lasvegasshooting
             </button>
-            <button type="button" id="texas-btn">Sutherland Springs (TX)
+            <button type="button" id="texas-btn">#texasshooting
             </button>
           </div>
         </div>

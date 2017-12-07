@@ -22,8 +22,6 @@ algorithm, with a legend table that shows some info on the most connected
 node in this community, under the assumption that this will tell us something
 about the community as a whole.
 
-
-
 {% include partition-lv.html %}
 
 ## Analysis
@@ -40,7 +38,3 @@ controlled media outlet, linked to fake news on
 [multiple occasions](https://en.wikipedia.org/wiki/Fake_news_website), and
 [marypatriotnews.com](https://www.twitter.com/marypatriotnews)
 which is a hyper conservative outlet to say the least.
-
-### Hashtag Heatmap
-
-As

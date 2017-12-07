@@ -2,3 +2,58 @@
 ---
 
 @import "jekyll-theme-minimal";
+
+.subscript {
+  display: block;
+}
+
+.button-label {
+  color: #999;
+  text-transform: uppercase;
+  font-weight:lighter;
+  margin-bottom: 5px;
+}
+
+.link-list {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.graph-settings {
+  width: 50%;
+  float: left;
+}
+
+.graph-wrapper{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  color: #494949;
+}
+
+.selected {
+  background-color: #e5e5e5;
+}
+
+.button-block {
+  padding-top: 3px;
+  padding-bottom: 20px;
+}
+
+.back-button {
+  float: right;
+}
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
