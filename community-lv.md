@@ -2,7 +2,8 @@
 layout: network-lv
 ---
 
-# Community Analysis (Las Vegas)
+# Community Analysis
+### #lasvegasshooting
 
 The next step in our analysis is to define communities in our networks and see what these communities revolve around.
 
@@ -10,11 +11,11 @@ The next step in our analysis is to define communities in our networks and see w
 
 
 
-## Mention Graph Communities 
+## Mention Graph Communities
 
 
 
-First, we will look into the sizes of the communities in the mention graph and the biggest accounts in  communities, to get a sense for the type of accounts we find. Also here we will see  which are the websites cited in communities and what percentage of users have cited these pages. 
+First, we will look into the sizes of the communities in the mention graph and the biggest accounts in  communities, to get a sense for the type of accounts we find. Also here we will see  which are the websites cited in communities and what percentage of users have cited these pages.
 
 Then, we will look into the most common hashtags used in every community in the mention graph, to get a feeling for the topics that live in every community.
 
@@ -39,19 +40,20 @@ Here the percentages are percentage of the users who cited the website at least 
 When we think both table above we see some interesting results:
 
 
-+ Especially when people are spreading rumors, they tend to share videos. For example, for this event people generally claim that there was multiple shooter and they share videos related to this claim. We can see this in lines 1 and 3 (community no 40 and 6). Most of the users who shared news from alternative media are sharing videos from youtube. 
++ Especially when people are spreading rumors, they tend to share videos. For example, for this event people generally claim that there was multiple shooter and they share videos related to this claim. We can see this in lines 1 and 3 (community no 40 and 6). Most of the users who shared news from alternative media are sharing videos from youtube.
 
 + There might be a relationship between 'www.intellihub.com', 'yournewswire.com'. (Actually we saw that both are alternative media)
 
-  + In the line forteen we can see that there is a relation between sites, www.reviewjournal.com and lvrj.com. This is actually true since both of them are local media of Las Vegas. 
+  + In the line forteen we can see that there is a relation between sites, www.reviewjournal.com and lvrj.com. This is actually true since both of them are local media of Las Vegas.
 
 
 
 An interesting way to analyze communities is to find which hashtags they tend to use. For example if a community tends to use '#guncontrol'  hashtag we can infer that there is a relation with this community and the gun laws.
 
 
-
-![confMatrix](./images/confMatrix.png)
+<p style="text-align: center">
+  <img src="images/confMatrix.png"/>
+</p>
 
 
 
@@ -63,7 +65,7 @@ The *heatmap* above displays how often the most common hashtags appear in every 
 
 
 
-## Information Graph Communities 
+## Information Graph Communities
 
 
 
@@ -86,10 +88,10 @@ The *heatmap* above displays how often the most common hashtags appear in every 
 
 
 
-This table clearly gives incredible insight about which website is similar to which. Similar sites are generally grouped with other similars. 
+This table clearly gives incredible insight about which website is similar to which. Similar sites are generally grouped with other similars.
 
-- We can directly see that in community 13, there are Spanish websites. 
-- In community 10, there are websites about first aid. 
+- We can directly see that in community 13, there are Spanish websites.
+- In community 10, there are websites about first aid.
 - Community 6 and 7 are alternative media.
 - Community 2 is mainstream media
 - Community 1 is general visual media (vimeo, youtube)

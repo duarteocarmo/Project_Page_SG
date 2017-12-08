@@ -3,10 +3,11 @@ layout: sentiment-lv
 ---
 
 # Sentiment Analysis
+### #lasvegasshooting
 
 ## Part 1: How happy?
 
-​	Firstly, we have studied the sentiment distribution of the Las Vegas Database in chronological order. After cleaning all of the tweets, and reducing them to their bare core, a database of happy words scoring by MIT was used. Here any hashtags or websites used within the text was removed. It's also interesting to see the change in the sentiment of "influencial" tweets. Below you can see the distribution of sentiment average hourly sentiment index and average sentiment index of the tweets with more than 100 retweets. 
+​	Firstly, we have studied the sentiment distribution of the Las Vegas Database in chronological order. After cleaning all of the tweets, and reducing them to their bare core, a database of happy words scoring by MIT was used. Here any hashtags or websites used within the text was removed. It's also interesting to see the change in the sentiment of "influencial" tweets. Below you can see the distribution of sentiment average hourly sentiment index and average sentiment index of the tweets with more than 100 retweets.
 
 
 
@@ -38,7 +39,7 @@ But this is limited. It seems that a simple word analysis does not tell as much,
 
 DeepMoji is a model trained on 1.2 billion tweets with emojis to understand how language is used to express emotions, you can learn more about it [here](https://github.com/bfelbo/DeepMoji). Using this model, we were able to go further than simply what words people use, but how people are actually feeling.
 
-For each tweet, we used the DeepMoji pre-trained model to characterise the tweets. Using this technique, we could extract the emojis/emotions that best characterise the tweets. This model gives 5 emojis which best suits to the sentiment of the given tweet. Below you can see the frequency of emojis. 
+For each tweet, we used the DeepMoji pre-trained model to characterise the tweets. Using this technique, we could extract the emojis/emotions that best characterise the tweets. This model gives 5 emojis which best suits to the sentiment of the given tweet. Below you can see the frequency of emojis.
 
 
 
@@ -81,7 +82,7 @@ Since we analysed how the happiness index evolves over time, we thought it would
 
 ![LVsentiment4](./images/LVsentiment4.png)
 
-This figure describes the tweets with emojis over time using the DeepMoji model. Severall things are interesting and worth descibing in this graph, let's mention some of them: 
+This figure describes the tweets with emojis over time using the DeepMoji model. Severall things are interesting and worth descibing in this graph, let's mention some of them:
 
-- At the beginning of the event, there is a great rise in tweets characterized with the **heart** emoji. At this point, the use of **broken heart** goes down dramatically. 
-- Also interesting is the fact that over almost all 12-hour periods, the **hearts** emoji is the most frequent in characterizing tweets. 
+- At the beginning of the event, there is a great rise in tweets characterized with the **heart** emoji. At this point, the use of **broken heart** goes down dramatically.
+- Also interesting is the fact that over almost all 12-hour periods, the **hearts** emoji is the most frequent in characterizing tweets.

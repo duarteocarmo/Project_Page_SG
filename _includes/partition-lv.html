@@ -11,6 +11,7 @@
     <div class="button-block">
       <button type="button" id="mention-gcc" class="selected">Mention Graph</button>
       <button type="button" id="hashtag-gcc">Hashtag Graph</button>
+      <button type="button" id="info-gcc">Info Graph</button>
     </div>
   </div>
   <svg id="gcc" style="width: 100%;" width="800" height="600"></svg>
@@ -105,6 +106,7 @@
       $("#mention-gcc").click(function(){
         $("#mention-gcc").addClass("selected")
         $("#hashtag-gcc").removeClass("selected")
+        $("#info-gcc").removeClass("selected")
         removeGcc();
         graph = 'mention';
         renderGcc();
@@ -113,8 +115,18 @@
       $("#hashtag-gcc").click(function(){
         $("#hashtag-gcc").addClass("selected")
         $("#mention-gcc").removeClass("selected")
+        $("#info-gcc").removeClass("selected")
         removeGcc();
         graph = 'hashtag';
+        renderGcc();
+        generateTable();
+      });
+      $("#info-gcc").click(function(){
+        $("#info-gcc").addClass("selected")
+        $("#mention-gcc").removeClass("selected")
+        $("#hashtag-gcc").removeClass("selected")
+        removeGcc();
+        graph = 'info';
         renderGcc();
         generateTable();
       });
