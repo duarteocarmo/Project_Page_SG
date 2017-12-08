@@ -4,18 +4,20 @@ layout: network-lv
 # The Networks (Las Vegas)
 
 ## Generating networks from tweets
-From the tweets we collected we are going to generate 2 of different networks
-that we will be using throughout the rest of the analysis. In either network,
-the *nodes* are going to be the users that have been tweeting about the event
-using one of the predefined hashtags.   
-For the first network, the *edges* will be constructed through mentions in these
-tweets. So, when a tweet mentions another user that is also a *node* in the
-network, there will be an *edge* between these two *nodes*. We will refer to
-this network as `mention_graph`.   
-For the second network, we define the *edges* between *nodes* if they share a
-common hashtag, not including the query hashtags. For example, if two tweets
-from different *nodes* use the hashtag **#GunSense**, we will create an *edge*
-between them. We will refer to this network as `hashtag_graph`.
+We have very rich and interesting data to analyze. There are different networks hidden in our data. 
+
+From the tweets we collected we are going to generate a number of different networks that we will be used throughout the analysis. 
+
+**Network 1:**
+For the first network, the *nodes* are the users who have tweeted under the hashtag '#LasVegasShooting'. The *edges* will be constructed through mentions in these tweets. So, when a tweet mentions another user that is also a *node* in the network, there will be an *edge* between these two. We will refer to this network as `mention_graph`.   
+
+**Network 2:**
+For the second network, *nodes* are still the users. We define the *edges* between *nodes* if they share a common hashtag, not including the query hashtags. For example if two tweets from different *nodes* use the hashtag **#GunSense**, we will create an *edge* between them. We will refer to this network as `hashtag_graph`. 
+
+**Network 3:**
+Finally, for the third network, *nodes* are sources of information. Those are the websites, users are referencing to.  We define the *edges* between *nodes* if same user share an article from both of the websites. For example if the user 'DonaldTrumpJr' shared articles from both 'Fox News' and 'CNN' there will be an edge between these nodes. 
+
+Below we will start creating the networks.
 
 ### Stats
 Below we have displayed some basic statistics about either graph.
