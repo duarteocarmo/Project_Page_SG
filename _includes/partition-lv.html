@@ -58,11 +58,11 @@
             table.deleteRow(1);
           }
     
-          var accounts = sortByKey(json, 'Partition');
+          var accounts = sortByKey(json, 'Community No');
           for (var i in accounts) {
             var rowNumber = Number(i) + 1;
             var row = table.insertRow(rowNumber);
-            row.style.color = color(accounts[i]['Partition']);
+            row.style.color = color(accounts[i]['Community No']);
             for (j = 0; j < columns.length; j++) {
               var cell = row.insertCell(j);
               cell.innerHTML = accounts[i][columns[j]];
