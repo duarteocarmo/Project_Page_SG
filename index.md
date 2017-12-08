@@ -45,7 +45,7 @@ To prove the pipeline of tools, we applied them to two different events:
 
 - The 2017 Sutherland Springs church shooting. (5th November 2017) [Notebook](https://nbviewer.jupyter.org/gist/anonymous/fc1eeb6469fb316710f448f0fca3508c)  
   *~50.000 tweets*
-- The 2017 Las Vegas shooting. (1st October 2017) [Notebook]()  
+- The 2017 Las Vegas shooting. (1st October 2017) [Notebook](http://nbviewer.jupyter.org/gist/anonymous/64b9e6ec6ca9b66e0b46df16a2397329)  
   *~170.000 tweets*
 
 There are many ways you can consult the analysis:
@@ -66,14 +66,19 @@ Throughout our analysis, we found a lot of cool stuff, here are some of the most
 **<u>Sutherland Springs Shooting:</u>**
 
 - On the [Sentiment Analysis](https://duarteocarmo.github.io/Project_Page_SG/sentiment-page), something very interesting happens with user sentiment at the 1 week mark, where the DeepMoji model helps us identify some sort of mourning, exactly one week after the event, where people start referring to the shooting in a more compassionate, less agressive  way.
-
 - From [community detection](community-texas), we found a community with number 6 that was very
-homogenic in its sentiment expressed in emojis towards certain hashtags,
-meaning they has either only negative or only positive emojis for most hashtags.
-They are big
-fans of **#2a** (second amendment) but not so much of **#guncontrol**. They
-display rather positive emotions for **#maga** (make america great again),
-**#msm** (mainstram media, but used by far right),  **#nra** (the national rifle
-association) and **#tcot** (top conservative on twitter). They seem rather
-divided on **#trump** with both clapping and crying emojis. Interesting to see that
-the most connected users in this community are ABC News and CBS News.
+  homogenic in its sentiment expressed in emojis towards certain hashtags,
+  meaning they has either only negative or only positive emojis for most hashtags.
+  They are big
+  fans of **#2a** (second amendment) but not so much of **#guncontrol**. They
+  display rather positive emotions for **#maga** (make america great again),
+  **#msm** (mainstram media, but used by far right),  **#nra** (the national rifle
+  association) and **#tcot** (top conservative on twitter). They seem rather
+  divided on **#trump** with both clapping and crying emojis. Interesting to see that
+  the most connected users in this community are ABC News and CBS News.
+
+## Team
+
+- Ahmet Bağlan, MSc Digital Media Engineering 🇹🇷
+- Duarte O.Carmo, MSc Engineering Management 🇵🇹
+- Wisse Barkhof, MSc Digital Media Engineering 🇳🇱

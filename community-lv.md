@@ -7,10 +7,6 @@ layout: network-lv
 
 The next step in our analysis is to define communities in our networks and see what these communities revolve around.
 
-
-
-
-
 ## Mention Graph Communities
 
 
