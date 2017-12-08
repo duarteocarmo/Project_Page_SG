@@ -3,6 +3,7 @@ layout: community-texas
 ---
 
 # Community Analysis
+### #texasshooting
 
 The next step in our analysis is to define communities in our network and
 see what these communities revolve around.First, we will look into the
@@ -93,5 +94,76 @@ or have very neutral hashtags.
  <img src="images/hashtag_hashtag_heatmap_tx.png"/>
 </p>
 
+### Emoji Hashtag Matrix
 
-{% include mention_deepmoji_table_tx.html %}
+As we can see above, the use of a hashtag can be fairly ambiguous. People can
+use a certain hashtag and be either pro or against it, or use the hastag in a
+sarcastic or ironic way. To add a bit more context
+we thought it would be interesting to look at what sentiments or thoughts
+are associated with the hashtags in each community. For this, we used
+[DeepMoji \[2\]](references) again. These researchers from MIT, among other
+universities, have constructed a way to train neural networks on text with emojis
+that let them predict a series of emojis from a sentence. The project is freely
+available on github including the pretrained models, which can quite articulately describe the
+sentiment or feeling of that piece of text. We decided to correlate
+the hashtags used in every community with the emojis returned from DeepMoji
+ to get a more refined image of the opinions
+that are prevalent in these communities.
+
+Below, the results of this correlation are displayed in a emoji / hashtag
+matrix for the communities. De rows represent the different
+communities in the networks and the columns the most common hashtags in these
+networks. In the cells the most common emojis found through DeepMoji prediction
+are displayed. The smallest communities and some trivial hashtags have
+been left out for clarity.
+
+#### Mention Graph
+
+<p align="center">
+ <img src="images/deepmoji_hashtag_mention.png"/>
+</p>
+
+From the table above, it is clear that some communities have more unified
+feelings about certain topics than others. Most homogenic would be community 6,
+which has either negative or positive emojis for most hashtags. They are big
+fans of **#2a** (second amendment) but not so much of **#guncontrol**. They
+display rather positive emotions for **#maga** (make america great again),
+**#msm** (mainstram media, but used by far right),  **#nra** (the national rifle
+association) and **#tcot** (top conservative on twitter). They seem rather
+divided on **#trump** with both clapping and crying emojis. Interesting to see that
+the most connected users in this community are ABC News and CBS News.
+
+Similar emojis appear for community 9, except that an angry emoji appears
+alongside all other ones. Maybe the language used in this community has a lot
+of anger in it. Community 2 seems to condone **#gunviolence** and in favor of
+**#guncontrolnow**.
+
+#### Hashtag Graph
+
+Unfortunately, the emoji / hashtag matrix for the hashtag graph is very
+incoherent. All cells with emojis seem to express contradicting feelings. It
+is included for completeness. The hashtag network's communities are small and
+there was less data for this event in the data base to find the hashtags from.
+
+<p align="center">
+ <img src="images/deepmoji_hashtag_hashtag.png"/>
+</p>
+
+## Conclusion
+
+Overall, we have found some interesting results from the community analysis on
+both networks, but for the `mention_graph` it was definitely more insightful than
+for the `hashtag_graph`. Since the partition is based of modularity of the
+separate communities, it makes sense that a more 'hierarchical' and well defined
+like the `hashtag_graph`. This showed in terms of the type of users made up the
+big nodes in the network, as well as the more coherent partitions found in the
+`mention_graph`.
+
+A big probelm with comminity detection is the validation of the communities,
+especially if they get large. The hahstag emoji matrix seems to be an interesting
+tool to do this. However, we see that many communities have mixed emojis per hashtag.
+This could
+point to divided communities but could also be a result of data sparsity, inaccuracy
+of the model or the fairly simple way the emojis were counted and averaged out.
+More than a definite end result, this matrix should be seen as a proof of
+concept which should be perfected to give accurate results.
