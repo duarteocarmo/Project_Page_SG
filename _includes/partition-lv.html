@@ -18,13 +18,16 @@
     <capiton>Top accounts by degree per partition</capiton>
     <thead>
       <tr>
-        <th>Partition</th>
-        <th>Size</th>
-        <th>Top Account</th>
+        <th>Community No</th>
+        <th>Most Cited Website in Community</th>
+        <th>Percentage of Users who cited</th>
+        <th>Community Size</th>
+        <th>Screen Name</th>
+        <th>Name</th>
+        <th>Url</th>
         <th>Location</th>
-        <th>URL</th>
-        <th>Degree</th>
         <th>Followers</th>
+        <th>Degree</th>
       </tr>
     </thead>
   </table>
@@ -40,26 +43,26 @@
     }
     var scale = 'normal';
     var graph = 'mention';
-
+    
     var color = d3.scaleOrdinal(d3.schemeCategory20);
-
-    var columns = ['Partition', 'Partition Size', 'Screen Name', 'Location', 'Url', 'Degree', 'Followers'];
+    
+    var columns =['Community No', 'Most Cited Website in Community','Percentage of Users who cited', 'Community Size', 'Screen Name', 'Name', 'Url', 'Location', 'Followers', 'Degree'];
     var table = document.getElementById('legend');
-
+    
     function generateTable() {
       console.log('generateTable', table.rows.length)
-
-      $.getJSON('data/' + graph + '_partition_accounts.json', function(json) {
+    
+      $.getJSON('data/' + graph + '_partition_accounts_LV.json', function(json) {
           var tableLength = table.rows.length
           for (var rowNumber = 1; rowNumber < tableLength; rowNumber++) {
             table.deleteRow(1);
           }
-
-          var accounts = sortByKey(json, 'Partition');
+    
+          var accounts = sortByKey(json, 'Community No');
           for (var i in accounts) {
             var rowNumber = Number(i) + 1;
             var row = table.insertRow(rowNumber);
-            row.style.color = color(accounts[i]['Partition']);
+            row.style.color = color(accounts[i]['Community No']);
             for (j = 0; j < columns.length; j++) {
               var cell = row.insertCell(j);
               cell.innerHTML = accounts[i][columns[j]];
@@ -80,7 +83,7 @@
         'scaleFactor': 5
       }
     }
-
+    
     $(document).ready(function(){
       $("#normal-gcc").click(function(){
         $("#normal-gcc").addClass("selected")
@@ -97,7 +100,7 @@
         renderGcc();
       });
     });
-
+    
     $(document).ready(function(){
       $("#mention-gcc").click(function(){
         $("#mention-gcc").addClass("selected")
@@ -116,7 +119,7 @@
         generateTable();
       });
     });
-
+    
     function scaleSize(d) {
       if (scale === 'normal') {
         return 3;
@@ -125,12 +128,12 @@
         return gccSettings[graph]['scaleFactor'] * Math.log(d.degree);
       };
     };
-
+    
     function removeGcc() {
       var svg = d3.select("#gcc");
       svg.selectAll("*").remove();
     }
-
+    
     function renderGcc() {
       var svg = d3.select("#gcc"),
       width = +svg.attr("width"),
@@ -143,14 +146,14 @@
         .force("center", d3.forceCenter(width / 2, height / 2));
       d3.json("data/" + graph + "_partition.json", function(error, graph) {
         if (error) throw error;
-
+    
         var link = svg.append("g")
           .attr("class", "links")
           .selectAll("line")
           .data(graph.links)
           .enter().append("line")
           .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
-
+    
         var node = svg.append("g")
           .attr("class", "nodes")
           .selectAll("circle")
@@ -167,37 +170,37 @@
 
         node.append("title")
           .text(function(d) { return '@' + d.id + ' (partition: ' + d.partition + ')'; });
-
+    
         simulation
           .nodes(graph.nodes)
           .on("tick", ticked);
-
+    
         simulation.force("link")
           .links(graph.links);
-
+    
         function ticked() {
           link
             .attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
             .attr("x2", function(d) { return d.target.x; })
             .attr("y2", function(d) { return d.target.y; });
-
+    
           node
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; });
         }
-
+    
         function dragstarted(d) {
           if (!d3.event.active) simulation.alphaTarget(0.3).restart();
             d.fx = d.x;
             d.fy = d.y;
         }
-
+    
         function dragged(d) {
           d.fx = d3.event.x;
           d.fy = d3.event.y;
         }
-
+    
         function dragended(d) {
           if (!d3.event.active) simulation.alphaTarget(0);
             d.fx = null;
