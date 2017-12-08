@@ -15,7 +15,7 @@ For the first network, the *nodes* are the users who have tweeted under the hash
 For the second network, *nodes* are still the users. We define the *edges* between *nodes* if they share a common hashtag, not including the query hashtags. For example if two tweets from different *nodes* use the hashtag **#GunSense**, we will create an *edge* between them. We will refer to this network as `hashtag_graph`. 
 
 **Network 3:**
-Finally, for the third network, *nodes* are sources of information. Those are the websites, users are referencing to.  We define the *edges* between *nodes* if same user share an article from both of the websites. For example if the user 'DonaldTrumpJr' shared articles from both 'Fox News' and 'CNN' there will be an edge between these nodes. 
+Finally, for the third network, *nodes* are sources of information. Those are the websites, users are referencing to.  We define the *edges* between *nodes* if same user share an article from both of the websites. For example if the user 'DonaldTrumpJr' shared articles from both 'Fox News' and 'CNN' there will be an edge between these nodes.  We will refer to this network as `info_graph`. 
 
 Below we will start creating the networks.
 
@@ -28,23 +28,17 @@ Below we have displayed some basic statistics about either graph.
 
 As we can see from the number of components in either graph, a large part of
 the networks is unconnected. This is further demonstrated by the degree
-distribution, which is shown below.
+distribution of the graphs. 
 
-![degree_distribution](images/graphs_degree_distribution.png)
+![LAnetwork1](./images/LAnetwork1.png)
 
-### Components
+![LAnetwork2](./images/LAnetwork2.png)
 
-The `hashtag_graph` seems to look somewhat linear on a logarithmic scale,
-suggesting that the distribution follows a power law. However, the `mention_graph`
-is still not linear which indicates an even more skewed distribution. Also,
-we see a large peak in either graph for nodes with a *degree* of 0. This indicates
-a large amount of singletons. This becomes more clear when we look at the
-distribution of the components' sizes, which is depicted below.
+![LAnetwork3](./images/LAnetwork3.png)
 
-![components_size](images/graphs_component_size.png)
 
-There are big peaks where the components sizes are very small and then almost
-nothing in the end. This makes it really hard to deal with the network as is.
+
+Here, as you can see graphs are rather disconnected. Thus working on the GCC is a better idea. Also note that hashtag graph is interesting since there are many elements with high degree nodes but not many with low degree is due to the way of creating the graph. There is an edge between two nodes if an only if two users shared more than 10 tweets under same hashtag. 
 
 ### Plots
 
@@ -68,12 +62,6 @@ look at the *Giant Connected Component* (GCC) for the rest of the analysis.
 Below we have a new overview of stats from these GCC's for each graph.
 ### Stats
 {% include gcc_tables-lv.html %}
-
-### Degree Distribution
-
-This comes with a new degree distribution of course, which is displayed below.
-
-![gcc_degree_dist](images/gcc_degree_distribution.png)
 
 ### Plots
 
