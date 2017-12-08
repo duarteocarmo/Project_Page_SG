@@ -25,7 +25,7 @@ All the graphs can be seen as DJ3. However since those are big graphs, it slows 
 
 
 
-{% include graph_tables-lv.html %}
+{% include gcc-lv.html %}
 
 
 
