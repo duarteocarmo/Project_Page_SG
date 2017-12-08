@@ -21,14 +21,6 @@ Below we will start creating the networks.
 
 
 
-All the graphs can be seen as DJ3. However since those are big graphs, it slows down the browser. You can try it by togglin the button.
-
-
-
-{% include gcc-lv.html %}
-
-
-
 ## Mention Graph
 
 ### Stats
@@ -276,3 +268,15 @@ Here there are some interesting insights.
 - There are many mainstream information sources. People share a lot of article from Fox News, CNN, DailyMail. This does however show how they reference it. When we have analzed data we have seen some examples citing an article from mainstream media to oppose it. 
 - Also alternative media is common. People share lots of articles from 'intellihub.com','zerohedge.com', 'infowars.com'
 - Lastly  gofundme.com is a charity site for raising money to help victims
+
+
+
+
+
+All the GCC graphs can be seen as DJ3 simulation. However since those are big graphs, it slows down the browser. You can try it by toggling the button.
+
+
+{% include gcc-lv.html %}
+
+
+
