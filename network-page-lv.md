@@ -30,11 +30,11 @@ As we can see from the number of components in either graph, a large part of
 the networks is unconnected. This is further demonstrated by the degree
 distribution of the graphs. 
 
-![LAnetwork1](/home/ahmet/Projects/socGraphSite/Project_Page_SG/images/LAnetwork1.png)
+![LAnetwork1](./images/LAnetwork1.png)
 
-![LAnetwork2](/home/ahmet/Projects/socGraphSite/Project_Page_SG/images/LAnetwork2.png)
+![LAnetwork2](./images/LAnetwork2.png)
 
-![LAnetwork3](/home/ahmet/Projects/socGraphSite/Project_Page_SG/images/LAnetwork3.png)
+![LAnetwork3](./images/LAnetwork3.png)
 
 
 
@@ -69,4 +69,3 @@ This makes for much nicer plots, which can be seen below. Again with the same
 controls.
 
 {% include gcc-lv.html %}
-
