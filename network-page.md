@@ -3,6 +3,7 @@ layout: network
 ---
 
 # The Networks
+### #texasshooting
 
 ## Generating networks from tweets
 From the tweets we collected we are going to generate 2 of different networks

@@ -3,6 +3,7 @@ layout: sentiment
 ---
 
 # Sentiment Analysis
+### #texasshooting
 
 ## Part 1: How happy?  
 
@@ -37,7 +38,7 @@ But this is limited. It seems that a simple word analysis does not tell as much,
 
 ## Part 3: How can emojis refine sentiment?💡
 
-​	DeepMoji is a model trained on 1.2 billion tweets with emojis to understand how language is used to express emotions, you can learn more about it [here](https://github.com/bfelbo/DeepMoji). Using this model, we were able to go further than simply what words people use, but how people are actually feeling.
+​[DeepMoji \[2\]](references) is a model trained on 1.2 billion tweets with emojis to understand how language is used to express emotions, you can learn more about it [here](https://github.com/bfelbo/DeepMoji). Using this model, we were able to go further than simply what words people use, but how people are actually feeling.
 
 For each tweet, we used the DeepMoji pre-trained model to characterise the tweets. Using this technique, we could extract the emojis/emotions that best characterise the tweets.
 
