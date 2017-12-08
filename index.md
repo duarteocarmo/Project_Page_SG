@@ -43,7 +43,7 @@ To handle data, we used several tools:
 
 To prove the pipeline of tools, we applied them to two different events:
 
-- The 2017 Sutherland Springs church shooting. (5th November 2017) [Notebook]()  
+- The 2017 Sutherland Springs church shooting. (5th November 2017) [Notebook](https://nbviewer.jupyter.org/gist/anonymous/fc1eeb6469fb316710f448f0fca3508c)  
   *~50.000 tweets*
 - The 2017 Las Vegas shooting. (1st October 2017) [Notebook]()  
   *~170.000 tweets*

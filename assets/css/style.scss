@@ -3,6 +3,25 @@
 
 @import "jekyll-theme-minimal";
 
+
+.disclaimer {
+  width: 100%;
+  display: block;
+}
+
+.disclaimer i {
+  display: block;
+}
+
+.disclaimer strong {
+  display: block;
+  margin-top: 10px;
+}
+
+.toggle-graph {
+  margin-top: 50px;
+}
+
 .subscript {
   display: block;
 }
