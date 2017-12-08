@@ -55,9 +55,9 @@
         graph = 'mention';
         renderGraph();
       });
-      $("#hashtag").click(function(){
-        $("#hashtag").addClass("selected")
-        $("#mention").removeClass("selected")
+      $("#hashtag-graph").click(function(){
+        $("#hashtag-graph").addClass("selected")
+        $("#mention-graph").removeClass("selected")
         removeGraph();
         graph = 'hashtag';
         renderGraph();
@@ -152,6 +152,6 @@
         }
     });
     };
-    
+
     renderGraph();
 </script>

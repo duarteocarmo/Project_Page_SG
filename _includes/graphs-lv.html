@@ -1,4 +1,24 @@
-<div class="graph-wrapper">
+<div class="disclaimer">
+  <i>
+    Due to the large sizes of these networks, we have turned off D3js by default
+    to load the page smoothly. Below, you can toggle it on or off. If you turn
+    it on, please be patient. Also, stick to the 'mention' and 'information'
+    networks, they are a bit more manageable in size than the 'hashtag' graph
+    and make sure to turn this one 'off' when you turn another one 'on'.
+  </i>
+  <strong>
+    No static images were included here, since they were too large to display.
+    Further down, plots of interesting parts of the graph will be shown.
+  </strong>
+  <div class="toggle-graph">
+    <label>D3js Toggle</label>
+    <div class="button-block">
+      <button type="button" id="off" class="selected">Off</button>
+      <button type="button" id="on">On</button>
+    </div>
+  </div>
+</div>
+<div class="graph-wrapper" style="display: none">
   <div class="graph-settings">
     <label>Node size scale</label>
     <div class="button-block">
@@ -9,15 +29,18 @@
   <div class="graph-settings">
     <label>Type of graph</label>
     <div class="button-block">
-      <button type="button" id="mention-graph" class="selected">Mention Graph</button>
+      <button type="button" id="mention-graph" >Mention Graph</button>
       <button type="button" id="hashtag-graph">Hashtag Graph</button>
+      <button type="button" id="info-graph" class="selected">Information Graph</button>
     </div>
   </div>
   <svg id="graph" style="width: 100%;" width="800" height="600"></svg>
 </div>
 <script>
+
+
     var scale = 'normal';
-    var graph = 'mention';
+    var graph = 'info';
 
     var graphSettings = {
       'hashtag': {
@@ -27,8 +50,27 @@
       'mention': {
         'strength': 0,
         'scaleFactor': 5
+      },
+      'info': {
+        'strength': -5,
+        'scaleFactor': 5,
       }
     }
+
+    $(document).ready(function(){
+      $('#off').click(function() {
+        $('#off').addClass('selected');
+        $('#on').removeClass('selected');
+        $('.graph-wrapper').hide();
+        removeGraph();
+      });
+      $('#on').click(function() {
+        $('#on').addClass('selected');
+        $('#off').removeClass('selected');
+        $('.graph-wrapper').show();
+        renderGraph();
+      });
+    });
 
     $(document).ready(function(){
       $("#normal-graph").click(function(){
@@ -51,15 +93,25 @@
       $("#mention-graph").click(function(){
         $("#mention-graph").addClass("selected")
         $("#hashtag-graph").removeClass("selected")
+        $("#info-graph").removeClass("selected")
         removeGraph();
         graph = 'mention';
         renderGraph();
       });
       $("#hashtag").click(function(){
-        $("#hashtag").addClass("selected")
-        $("#mention").removeClass("selected")
+        $("#hashtag-graph").addClass("selected")
+        $("#mention-graph").removeClass("selected")
+        $("#info-graph").removeClass("selected")
         removeGraph();
         graph = 'hashtag';
+        renderGraph();
+      });
+      $("#hashtag").click(function(){
+        $("#info-graph").addClass("selected")
+        $("#mention-graph").removeClass("selected")
+        $("#hashtag-graph").removeClass("selected")
+        removeGraph();
+        graph = 'info';
         renderGraph();
       });
     });
@@ -91,7 +143,7 @@
         .force("link", d3.forceLink().id(function(d) { return d.id; }))
         .force("charge", d3.forceManyBody().strength(graphSettings[graph]['strength']))
         .force("center", d3.forceCenter(width / 2, height / 2));
-      d3.json("data/" + graph + "_graph.json", function(error, graph) {
+      d3.json("data/" + graph + "_graph_LV.json", function(error, graph) {
         if (error) throw error;
 
         var link = svg.append("g")
@@ -152,6 +204,5 @@
         }
     });
     };
-    
-    renderGraph();
+
 </script>
